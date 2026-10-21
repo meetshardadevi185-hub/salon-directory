@@ -1,26 +1,30 @@
 {
   "meta": {
-    "title": "TrimCircle — Salons near you in Agra: barbers, parlours, kids' and bridal",
-    "description": "Find a good salon near you in Agra. Barbers, beauty parlours, kids' haircuts and bridal makeup with real prices, real photos and today's timings. Free, no login."
+    "title": "TrimCircle — Salons near you across India: barbers, parlours, kids' and bridal",
+    "description": "Explore sample salons and discover TrimCircle tools for salon owners, including a free salon page and help with Google Business Profile."
   },
   "common": {
     "skip": "Skip to content",
     "examplePhoto": "Example photo",
+    "exampleFootage": "Example footage",
     "sample": "Sample",
     "from": "from {price}",
     "language": "Language",
     "chooseLanguage": "Choose language",
     "comingSoon": "Coming soon",
     "menu": "Menu",
-    "close": "Close"
+    "close": "Close",
+    "themeDark": "Switch to dark theme",
+    "themeLight": "Switch to light theme"
   },
   "nav": {
     "services": "Services",
     "how": "How it works",
-    "looks": "Looks of Agra",
+    "looks": "Trending looks",
     "salons": "Salons near you",
     "owners": "For salon owners",
-    "listCta": "List your salon free"
+    "listCta": "List your salon free",
+    "cities": "Cities"
   },
   "intro": {
     "loading": "Finding salons near you"
@@ -31,29 +35,29 @@
       "near *you*."
     ],
     "sub": "Barbers, beauty parlours, kids' cuts and bridal artists, with real prices and real photos from salons in your own colony.",
-    "searchLabel": "Area or pincode",
-    "placeholder": "Kamla Nagar or 282005",
+    "searchLabel": "City, area or salon name",
+    "placeholder": "Search city, area or salon name",
     "nearMe": "Near me",
     "submit": "Search salons",
-    "popular": "Popular in Agra",
+    "popular": "Popular cities",
     "trust": [
       "Free for families",
       "No login needed",
       "Real prices, real photos"
     ],
-    "badge": "Salons near you · Agra · ",
+    "badge": "Salons near you · India · ",
     "locating": "Finding your location…",
     "located": "Showing salons near your location.",
-    "denied": "We couldn't get your location. Type your area or pincode instead.",
-    "empty": "Type your area name or a 6-digit pincode.",
-    "badPincode": "A pincode has 6 digits, like 282005.",
+    "denied": "We couldn't get your location. Search by city or area instead.",
+    "empty": "Type a city, area or salon name.",
+    "badPincode": "A pincode has 6 digits, like 110001.",
     "searching": "Showing salons near {query}.",
-    "eyebrow": "Agra's salon directory",
+    "eyebrow": "India's salon directory",
     "whatLabel": "Service",
     "whatAll": "All services",
     "browse": "Browse by category",
     "searchingCat": "Showing {cat} near you.",
-    "kicker": "Find your salon in Agra",
+    "kicker": "Salons for everyone",
     "lines2": [
       "A good salon. Right ",
       "*near you.*"
@@ -62,25 +66,44 @@
       "Barbers, beauty parlours and kids' cuts.",
       "Compare prices and find your next salon."
     ],
-    "popularShort": "Popular",
+    "popularShort": "Popular cities",
     "pause": "Pause background video",
-    "play": "Play background video"
+    "play": "Play background video",
+    "titleSr": "Find a great salon near you.",
+    "lead": "Find a great",
+    "rotate": [
+      "barber",
+      "beauty parlour",
+      "bridal artist",
+      "kids' salon",
+      "spa"
+    ],
+    "tail": "near you.",
+    "sub2": "Real prices, real photos and today's timings, from salons in every Indian city.",
+    "submitShort": "Search",
+    "quick": "Browse by service",
+    "referenceTitle": "Great hair starts with the right salon.",
+    "titleLead": "Find your next",
+    "titleAccent": "favourite salon.",
+    "referenceSub": "Photos, prices and offers from salons near you.",
+    "ownerDescription": "Own a salon? Get a free page and update it on WhatsApp.",
+    "ownerLink": "Explore salon tools"
   },
   "areas": [
-    "Kamla Nagar",
-    "Sanjay Place",
-    "Dayal Bagh",
-    "Sikandra",
-    "Tajganj",
-    "Shahganj",
-    "Belanganj",
-    "Lohamandi",
-    "Civil Lines",
-    "Khandari",
-    "Agra Cantt",
-    "Raja ki Mandi"
+    "Karol Bagh, Delhi",
+    "Bandra, Mumbai",
+    "Koramangala, Bengaluru",
+    "Malviya Nagar, Jaipur",
+    "Hazratganj, Lucknow",
+    "Kamla Nagar, Agra",
+    "Salt Lake, Kolkata",
+    "Banjara Hills, Hyderabad",
+    "Anna Nagar, Chennai",
+    "Aundh, Pune",
+    "Navrangpura, Ahmedabad",
+    "Civil Lines, Agra"
   ],
-  "statement": "Every colony in Agra has a salon someone swears by. TrimCircle brings them together, with real prices, real photos and today's timings, so you can choose in a minute and walk in with confidence.",
+  "statement": "Every neighbourhood in India has a salon someone swears by. TrimCircle brings them together, with real prices, real photos and today's timings, so you can choose in a minute and walk in with confidence.",
   "categories": {
     "title": "For everyone in the *family*",
     "sub": "From a quick trim before school to the big day, find the right hands for it.",
@@ -119,88 +142,121 @@
     },
     "kicker": "For everyone",
     "heading": "What are you looking for?",
-    "viewAll": "View all services"
+    "viewAll": "View all services",
+    "popTitle": "What do you need today?",
+    "popSub": "Starting prices from salons near you. Tap a service to see who does it best."
   },
   "how": {
-    "title": "Pick a salon in three easy steps",
+    "title": "From searching to salon chair.",
     "steps": [
       {
         "title": "Tell us where you are",
-        "body": "Type your area or pincode, or tap Near me. Salons closest to you show up first.",
-        "short": "Type your area or pincode, or tap Near me."
+        "body": "Search by city, area or salon name, or tap Near me to sort by distance.",
+        "short": "Search by city, area or salon name, or tap Near me."
       },
       {
-        "title": "Compare real prices and photos",
-        "body": "See what a haircut, facial or bridal package actually costs, with photos from the salon itself.",
-        "short": "See real prices and photos from each salon."
+        "title": "Compare salons and prices",
+        "body": "Explore example salon photos and starting prices.",
+        "short": "Explore example salon photos and starting prices."
       },
       {
-        "title": "Call, WhatsApp or just walk in",
-        "body": "Check today's timings and any offer, then call or message the salon directly. No booking fee.",
-        "short": "Call or WhatsApp the salon. No booking fee."
+        "title": "Choose a salon",
+        "body": "Open a salon page to explore its details.",
+        "short": "Open a salon page to explore its details."
       }
     ],
     "kicker": "How it works"
   },
+  "features": {
+    "label": "Why families use TrimCircle",
+    "items": [
+      {
+        "title": "Real prices",
+        "text": "See the rate card before you go"
+      },
+      {
+        "title": "Real photos",
+        "text": "Of the salon and its work"
+      },
+      {
+        "title": "Open today?",
+        "text": "Today's timings for every salon"
+      },
+      {
+        "title": "Call or WhatsApp",
+        "text": "Talk to the salon directly, free"
+      }
+    ]
+  },
   "looks": {
-    "title": "Looks of *Agra*",
-    "sub": "Fresh cuts and styles from salons around the city. Find a look you like, then find who made it.",
+    "title": "A new look, your way.",
+    "sub": "Fresh cuts and styles from salons across India. Find a look you like, then find who made it.",
     "hintTouch": "Swipe to see more",
     "hintScroll": "Keep scrolling",
+    "prev": "Previous looks",
+    "next": "More looks",
     "items": [
       {
         "name": "Low fade, textured top",
         "salon": "Sharp Edge Barbers",
-        "area": "Kamla Nagar"
+        "area": "Karol Bagh, Delhi"
       },
       {
         "name": "Soft layers with curtain bangs",
         "salon": "Gulmohar Beauty Studio",
-        "area": "Dayal Bagh"
+        "area": "Koramangala, Bengaluru"
       },
       {
         "name": "Classic side part and beard shape",
         "salon": "Nawab Hair Salon",
-        "area": "Shahganj"
+        "area": "Kamla Nagar, Agra"
       },
       {
         "name": "Kids' crew cut",
         "salon": "Little Stars Kids Salon",
-        "area": "Sanjay Place"
+        "area": "Bandra, Mumbai"
       },
       {
         "name": "Bridal bun with fresh mogra",
         "salon": "Shringaar Bridal Lounge",
-        "area": "Civil Lines"
+        "area": "Anna Nagar, Chennai"
       },
       {
         "name": "Global colour, warm brown",
         "salon": "Studio Eleven Unisex",
-        "area": "Sikandra"
+        "area": "Malviya Nagar, Jaipur"
       }
-    ]
+    ],
+    "kicker": "Style ideas"
   },
   "salons": {
-    "title": "Salons near *you*",
-    "sub": "Sample salons around Kamla Nagar, Agra.",
+    "title": "Find your kind of *salon.*",
+    "sub": "Explore sample salons and compare example prices, offers and photos.",
     "filters": {
       "all": "All",
-      "open": "Open now",
       "men": "Men",
       "women": "Women",
       "kids": "Kids",
-      "bridal": "Bridal"
+      "bridal": "Bridal",
+      "unisex": "Unisex",
+      "spa": "Spa"
     },
     "filterLabel": "Filter salons",
+    "filterButton": "Filters",
+    "serviceLabel": "Service",
+    "minimumRating": "Minimum rating",
+    "anyRating": "Any rating",
+    "maxPrice": "Maximum starting price",
+    "anyPrice": "Any price",
     "openNow": "Open now",
     "opensAt": "Opens at {time}",
     "distance": "{km} km away",
     "call": "Call",
     "whatsapp": "WhatsApp",
     "count": "{count, plural, one {# salon} other {# salons}}",
-    "empty": "No salons match this right now. Try All, or search another area.",
-    "showAll": "Show all",
-    "seeAll": "See all salons in Agra",
+    "empty": "No salons match these filters. Try another city or clear the filters.",
+    "showAll": "Clear filters",
+    "seeAll": "See all salons near you",
     "deals": {
       "firstVisit": "20% off first visit",
       "kidsFree": "Free kids' cut with dad's haircut",
@@ -212,11 +268,214 @@
       "women": "Women",
       "kids": "Kids",
       "bridal": "Bridal",
-      "unisex": "Unisex"
+      "unisex": "Unisex",
+      "spa": "Spa"
+    },
+    "kicker": "Near you",
+    "locTitle": "Where are you?",
+    "locSub": "Pick your city or use your location to see the closest salons first.",
+    "locFound": "Showing salons nearest to you",
+    "locFoundSub": "Sorted by distance from your location.",
+    "locCity": "Showing salons in {city}",
+    "locating": "Finding your location…",
+    "denied": "We couldn't get your location. Pick your city instead.",
+    "cityLabel": "City",
+    "searchCities": "Search cities",
+    "noCities": "No cities found",
+    "allCities": "All cities",
+    "useLocation": "Use my location",
+    "inCity": "in {city}",
+    "allIndia": "across India",
+    "nearest": "nearest first",
+    "prev": "Previous salons",
+    "next": "More salons",
+    "nearMe": "Near me",
+    "searchPlaceholder": "Search salon name or area",
+    "sortLabel": "Sort",
+    "sort": {
+      "rating": "Top rated",
+      "near": "Nearest",
+      "price": "Lowest price"
+    },
+    "toggles": {
+      "open": "Open now",
+      "deal": "Has offer"
+    },
+    "view": "View salon",
+    "startsAt": "Starts at",
+    "sampleTag": "Sample salon",
+    "ratingLabel": "Rated {rating} from {count} reviews",
+    "showFewer": "Show fewer salons"
+  },
+  "salonPageFeature": {
+    "badge": "For salon owners",
+    "title": "Your salon deserves a *page of its own.*",
+    "description": "Give customers a simple way to discover your salon and find the details they need before they visit.",
+    "benefits": [
+      "Show your photos and services",
+      "Share your prices, location and opening hours",
+      "Help customers contact you directly"
+    ],
+    "cta": "Get your free salon page",
+    "example": "Example page",
+    "previewServices": "Services & prices",
+    "previewHours": "Opening hours",
+    "previewHoursValue": "10:00 AM – 8:00 PM",
+    "previewContact": "Contact salon"
+  },
+  "salonTools": {
+    "cta": "Get started",
+    "example": "Illustration",
+    "comingSoon": "Coming soon",
+    "exampleWorkflow": "Example workflow",
+    "google": {
+      "title": "Help customers find you on *Google.*",
+      "description": "Get support with your Google Business Profile so people looking for a salon can discover your business on Search and Maps.",
+      "benefits": [
+        "Make your location and contact details easy to find",
+        "Show customers your salon hours and photos"
+      ],
+      "visualTitle": "Your business on Google",
+      "visualSub": "Profile support",
+      "previewHours": "Opening hours",
+      "visualItems": [
+        "Location & contact details",
+        "Photos & opening hours"
+      ]
+    },
+    "appointments": {
+      "title": "Keep appointments and queues *organised.*",
+      "description": "Bring your salon's bookings and waiting customers into a clearer daily routine.",
+      "benefits": [
+        "Keep track of upcoming appointments",
+        "See your waiting queue and who is next"
+      ],
+      "steps": [
+        {
+          "title": "Add a customer",
+          "description": "Add a walk-in to the waiting list."
+        },
+        {
+          "title": "See your queue",
+          "description": "Keep track of who is waiting and who is next."
+        },
+        {
+          "title": "Serve the next customer",
+          "description": "Move through the list as customers are served."
+        }
+      ],
+      "visualTitle": "Your salon day",
+      "visualSub": "Bookings & queue",
+      "previewAppointment": "Appointment",
+      "previewScheduled": "Scheduled visit",
+      "previewQueue": "Customer queue",
+      "previewWaiting": "Waiting customers",
+      "visualItems": [
+        "Upcoming appointments",
+        "Waiting customers"
+      ]
+    },
+    "whatsapp": {
+      "title": "Update your salon page on *WhatsApp.*",
+      "description": "Need to change something on your page? Send us a message on WhatsApp with the details you want updated.",
+      "benefits": [
+        "Share new photos or service prices",
+        "Update your opening hours and contact details"
+      ],
+      "steps": [
+        {
+          "title": "Choose what to update",
+          "description": "Select a photo, price, service or other page detail."
+        },
+        {
+          "title": "Send it on WhatsApp",
+          "description": "Share the new image or information with TrimCircle."
+        },
+        {
+          "title": "See it on your page",
+          "description": "Your update is published on your salon page."
+        }
+      ],
+      "previewChoose": "What would you like to update?",
+      "previewPhotoOption": "Salon photo",
+      "previewPhotoMessage": "Here is my new salon photo.",
+      "previewPublished": "Your page has been updated.",
+      "visualTitle": "Send us an update",
+      "visualSub": "Through WhatsApp",
+      "previewMessage": "Hi, I’d like to update my salon page.",
+      "previewReply": "Sure! Send us the details you’d like to change.",
+      "previewUpdate": "Here are my new prices and opening hours.",
+      "visualItems": [
+        "Photos & prices",
+        "Hours & contact details"
+      ]
+    },
+    "title": "More ways to *grow* your salon",
+    "sub": "Free help to get found, stay organised and keep your page fresh.",
+    "showcase": {
+      "title": "One free page. *Everything* your salon needs.",
+      "sub": "Pick a tool to see how it works for your salon.",
+      "tabs": {
+        "page": {
+          "label": "Your own salon page",
+          "short": "Photos, prices, timings and a contact button, on one link you can share anywhere."
+        },
+        "google": {
+          "label": "Found on Google",
+          "short": "We help set up your Google Business Profile so people nearby find you on Search and Maps."
+        },
+        "whatsapp": {
+          "label": "Update on WhatsApp",
+          "short": "Send a new photo or price on WhatsApp and your page is updated for you. No app, no login."
+        },
+        "bookings": {
+          "label": "Bookings & queue",
+          "short": "See today's appointments and who is waiting, so walk-ins never get lost."
+        }
+      },
+      "google": {
+        "type": "Hair salon",
+        "open": "Open",
+        "closes": "Closes 8:00 PM",
+        "directions": "Directions",
+        "call": "Call",
+        "website": "Website",
+        "reviews": "{count} reviews"
+      },
+      "bookings": {
+        "today": "Today",
+        "nowServing": "Now serving",
+        "walkIn": "Walk-in",
+        "waiting": "{count} waiting"
+      },
+      "whatsappName": "TrimCircle"
     }
   },
+  "ownerFeatures": {
+    "title": "More ways to grow your salon",
+    "sub": "Simple tools to help customers find you and keep your salon organised.",
+    "cta": "Get started",
+    "items": [
+      {
+        "title": "Free salon page",
+        "description": "Give customers one place to see your photos, services, prices and hours."
+      },
+      {
+        "title": "Google Business Profile",
+        "description": "Get help with your profile so customers can find your salon on Google Search and Maps."
+      },
+      {
+        "title": "Appointment bookings",
+        "description": "Organise customer appointments and keep track of upcoming visits."
+      },
+      {
+        "title": "Customer queue",
+        "description": "Keep track of waiting customers and see who is next."
+      }
+    ]
+  },
   "owners": {
-    "title": "Own a salon? Get your *free* page on WhatsApp.",
+    "title": "Your salon deserves to be *discovered.*",
     "sub": "No app, no website, no fee. Send us a message and your salon can be online today, with your prices, photos and timings. Change anything later, just by sending a WhatsApp.",
     "steps": [
       "Send “Hi” to TrimCircle on WhatsApp",
@@ -259,7 +518,7 @@
       },
       {
         "from": "me",
-        "text": "Royal Cuts, Kamla Nagar"
+        "text": "Royal Cuts, Karol Bagh, Delhi"
       },
       {
         "from": "bot",
@@ -267,19 +526,200 @@
       },
       {
         "from": "bot",
-        "text": "Done. Your page is live, and families near Kamla Nagar can find you now."
+        "text": "Done. Your page is live, and families near Karol Bagh can find you now."
       }
     ]
   },
   "footer": {
-    "tagline": "Salons near you. Starting in Agra, coming to your city.",
+    "tagline": "Salons near you, in every Indian city.",
     "explore": "Explore",
     "owners": "For salon owners",
     "ownersLink": "Free page on WhatsApp",
     "languages": "Languages",
-    "rights": "© {year} TrimCircle. Made in Agra.",
+    "rights": "© {year} TrimCircle. Made in India.",
     "photosNote": "Photos and salons shown are examples until our partner salons go live.",
     "top": "Back to top",
     "moreLangs": "+{count} more Indian languages coming soon"
+  },
+  "cities": [
+    "Delhi",
+    "Mumbai",
+    "Bengaluru",
+    "Jaipur",
+    "Lucknow",
+    "Agra"
+  ],
+  "citySec": {
+    "kicker": "Across India",
+    "title": "Good salons, in *your city.*",
+    "sub": "Choose a city to explore its sample salon listings.",
+    "sampleSalons": "{count, plural, one {# sample salon} other {# sample salons}}",
+    "list": [
+      "Delhi",
+      "Mumbai",
+      "Bengaluru",
+      "Hyderabad",
+      "Chennai",
+      "Kolkata",
+      "Pune",
+      "Ahmedabad",
+      "Jaipur",
+      "Lucknow",
+      "Agra",
+      "Chandigarh"
+    ],
+    "descriptions": {
+      "agra": "Historic charm, modern salons.",
+      "delhi": "Trendy spots in every corner.",
+      "mumbai": "Style meets city life.",
+      "bengaluru": "A vibrant salon scene.",
+      "jaipur": "Traditional touch, modern looks.",
+      "pune": "Growing style hub."
+    }
+  },
+  "offers": {
+    "title": "Salon offers *near you*",
+    "sub": "Discover sample deals on haircuts, beauty and more.",
+    "salonFrom": "Salon prices from {price}",
+    "kicker": "Deals & offers",
+    "claimNote": "Show this at the salon to claim",
+    "view": "View salon",
+    "prev": "Previous offers",
+    "next": "More offers",
+    "exampleNote": "Example offer",
+    "values": {
+      "kidsFree": {
+        "big": "Free",
+        "small": "kid's cut"
+      },
+      "weekday": {
+        "big": "₹399",
+        "small": "hair spa"
+      },
+      "firstVisit": {
+        "big": "20%",
+        "small": "off"
+      },
+      "bridalTrial": {
+        "big": "Free",
+        "small": "trial"
+      }
+    }
+  },
+  "salonPage": {
+    "back": "All salons",
+    "offer": "Offer at this salon",
+    "offerNote": "Show this page at the salon to get the offer. No coupon or booking needed.",
+    "services": "Services",
+    "startingAt": "Prices start at",
+    "call": "Call salon",
+    "whatsapp": "WhatsApp",
+    "directions": "Get directions",
+    "visit": "Visit the salon",
+    "sampleNote": "This is a sample salon. Real partner salons will appear here soon.",
+    "contactUnavailable": "Contact details and directions will be available for real partner salons.",
+    "metaTitle": "{name}, {area} — offers and prices | TrimCircle"
+  },
+  "home2": {
+    "ticker": [
+      "Free salon page for every owner",
+      "Real prices before you visit",
+      "Barbers · Beauty parlours · Kids' cuts · Bridal · Spa",
+      "Search in Hindi or English",
+      "Update your page on WhatsApp",
+      "No login, no app"
+    ],
+    "hero": {
+      "pick": "Offer of the day",
+      "view": "View"
+    },
+    "stats": [
+      {
+        "value": "{salons}",
+        "label": "sample salons to explore"
+      },
+      {
+        "value": "{cities}",
+        "label": "cities, more every month"
+      },
+      {
+        "value": "₹0",
+        "label": "to list your salon"
+      },
+      {
+        "value": "2",
+        "label": "languages, more coming"
+      }
+    ],
+    "statement": {
+      "title": "The best part of your week could be *one chair away.*",
+      "sub": "A quick cut before school, a quiet facial after work, the big day you have planned for months. See prices and photos first, then pick the salon that gets it right.",
+      "cta": "Find salons near you"
+    },
+    "offers": {
+      "eyebrow": "Today's offers",
+      "title": "Deals worth stepping out for.",
+      "sub": "Offers from salons on TrimCircle. Open a salon to see the details.",
+      "all": "See all salons",
+      "view": "View salon"
+    },
+    "salons": {
+      "eyebrow": "Salons near you"
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "Three steps to *your chair.*"
+    },
+    "cities": {
+      "eyebrow": "Cities"
+    },
+    "tools": {
+      "eyebrow": "For salon owners"
+    },
+    "owners": {
+      "eyebrow": "List your salon",
+      "line": "You run the salon. We'll handle the page."
+    },
+    "faq": {
+      "eyebrow": "Questions",
+      "title": "Good to know.",
+      "sub": "Quick answers for customers and salon owners.",
+      "items": [
+        {
+          "q": "Is TrimCircle free to use?",
+          "a": "Yes. Searching, comparing and opening salon pages is free, with no login and no app to install."
+        },
+        {
+          "q": "How do I find a salon near me?",
+          "a": "Type your city, area or a salon name in the search, or tap Near me to sort salons by distance from where you are."
+        },
+        {
+          "q": "Are the prices final?",
+          "a": "Prices show where a service starts, as shared by the salon. The final price can depend on hair length, products and the stylist, so confirm at the salon."
+        },
+        {
+          "q": "How do I list my salon?",
+          "a": "Send “Hi” to TrimCircle on WhatsApp with your photos, prices and timings. We set up your free page and you can change it later by sending another message."
+        },
+        {
+          "q": "Does it cost anything for salon owners?",
+          "a": "No. A salon page on TrimCircle is free. Help with your Google Business Profile is free too."
+        },
+        {
+          "q": "Can I use TrimCircle in Hindi?",
+          "a": "Yes. Switch to हिन्दी from the language menu at the top. More Indian languages are on the way."
+        }
+      ]
+    },
+    "closing": {
+      "eyebrow": "Find your salon",
+      "title": "You've seen the looks. *Now find your chair.*",
+      "sub": "Search your city or area, compare prices and photos, and walk in knowing what to expect.",
+      "search": "Search salons",
+      "owner": "List your salon free"
+    },
+    "footer": {
+      "blurb": "TrimCircle helps families find good salons nearby, with prices and photos before they visit, and gives every salon a free page."
+    }
   }
 }
