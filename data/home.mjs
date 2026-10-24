@@ -49,3 +49,31 @@ export const SALONS = [
 
 export const HERO_PHOTOS = ['hero-1', 'hero-2', 'hero-3'];
 export const STEP_PHOTOS = ['step-1', 'step-2', 'step-3'];
+
+// Sample service menu per category: [message key under profile.svc, price as a multiple of the salon's starting price].
+// Prices are always at or above the salon's "from" price. Replace with each salon's real menu.
+export const SERVICE_MENU = {
+  men: [['haircut', 1], ['beardTrim', 1], ['haircutBeard', 1.6], ['headMassage', 1.4], ['hairColor', 3]],
+  women: [['womenHaircut', 1], ['blowDry', 1.5], ['threading', 1], ['facial', 2.5], ['hairSpa', 3]],
+  kids: [['kidsCut', 1], ['firstHaircut', 1.2], ['kidsStyle', 1.5]],
+  bridal: [['bridalMakeup', 1], ['makeupTrial', 1], ['bridalHair', 1.4], ['mehndi', 1.2]],
+  unisex: [['haircut', 1], ['hairSpa', 2], ['facial', 2.4], ['hairColor', 3]],
+  spa: [['bodyMassage', 1], ['spaFacial', 1.2], ['manicure', 1], ['pedicure', 1.3]],
+};
+
+// Sample opening hours, the same for every sample salon. Replace per salon.
+export const HOURS = [['mon', '10:00 – 20:00'], ['tue', '10:00 – 20:00'], ['wed', '10:00 – 20:00'], ['thu', '10:00 – 20:00'], ['fri', '10:00 – 20:00'], ['sat', '10:00 – 21:00'], ['sun', '11:00 – 18:00']];
+
+// SAMPLE team per category: [name, role key (messages profile.roles), years of experience, specialties (keys of profile.svc)].
+// A salon shows up to 3 people from the categories it serves. Replace with each salon's real team.
+export const TEAM = {
+  men: [['Imran', 'barber', 8, ['haircut', 'beardTrim']], ['Rahul', 'seniorBarber', 12, ['haircutBeard', 'hairColor']], ['Sanjay', 'barber', 5, ['haircut', 'headMassage']]],
+  women: [['Neha', 'seniorStylist', 10, ['womenHaircut', 'blowDry']], ['Pooja', 'beautician', 7, ['facial', 'threading']], ['Anita', 'stylist', 6, ['hairSpa', 'womenHaircut']]],
+  kids: [['Vikram', 'kidsStylist', 9, ['kidsCut', 'firstHaircut']], ['Meena', 'kidsStylist', 6, ['kidsStyle', 'kidsCut']]],
+  bridal: [['Shruti', 'makeupArtist', 11, ['bridalMakeup', 'makeupTrial']], ['Kavya', 'stylist', 8, ['bridalHair', 'mehndi']]],
+  unisex: [['Arjun', 'seniorStylist', 9, ['haircut', 'hairColor']], ['Divya', 'stylist', 6, ['hairSpa', 'facial']]],
+  spa: [['Lata', 'therapist', 10, ['bodyMassage', 'spaFacial']], ['Rina', 'therapist', 7, ['manicure', 'pedicure']]],
+};
+
+// SAMPLE facilities: keys of messages profile.fac. "kids" is added only for salons that serve kids.
+export const FACILITIES = ['walkIns', 'ac', 'upi', 'cards', 'parking'];

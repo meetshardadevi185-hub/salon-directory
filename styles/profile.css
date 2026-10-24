@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Salon profile page (/salon/<slug>/). Same square, gold-accent language as the salons page.
+   ========================================================================== */
+.pf { --d-surface: var(--card); --d-tint: var(--bg-2); --d-line: var(--line-2); --d-gold: var(--accent); --d-gold-text: var(--accent-text); --d-on-gold: var(--on-accent); --d-ink: var(--text); --d-mute: var(--muted); padding-top: clamp(104px, 11vw, 132px); }
+:root[data-theme="light"] .pf { --d-surface: #fffdf9; --d-tint: #f6f2ec; --d-line: #e6dccb; --d-gold: #c49b54; --d-gold-text: #8a6a30; --d-on-gold: #fff; }
+.pf-wrap { width: min(100% - 2 * var(--gutter), var(--max)); margin-inline: auto; }
+.pf-h { font-size: 1.15rem; font-weight: 800; letter-spacing: -.01em; margin-bottom: 14px; }
+
+/* ---------- top: breadcrumb, name, quick facts, actions ---------- */
+.pf-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; margin-bottom: 14px; color: var(--d-mute); font-size: .84rem; }
+.pf-crumbs a:hover { color: var(--d-gold-text); }
+.pf-crumbs b { color: var(--d-ink); font-weight: 700; }
+.pf-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 28px; padding-bottom: 22px; border-bottom: 1px solid var(--d-line); }
+.pf-name { font-size: clamp(1.8rem, 3.6vw, 2.8rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; }
+.pf-sub { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; margin-top: 12px; color: var(--d-mute); font-size: .92rem; }
+.pf-rating, .pf-area { display: inline-flex; align-items: center; gap: 6px; }
+.pf-rating .ic { width: 16px; height: 16px; color: #e0a526; }
+.pf-rating b { color: var(--d-ink); }
+.pf-rating em, .pf-area .ic { font-style: normal; }
+.pf-area .ic { width: 16px; height: 16px; color: var(--d-gold-text); }
+.pf-status { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; }
+.pf-status i { width: 8px; height: 8px; border-radius: 50%; background: var(--d-mute); }
+.pf-status.is-open { color: var(--open); }
+.pf-status.is-open i { background: var(--open); box-shadow: 0 0 0 4px color-mix(in srgb, var(--open) 20%, transparent); }
+.pf-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.pf-tags span { padding: 4px 11px; border: 1px solid var(--d-line); background: var(--d-surface); font-size: .78rem; font-weight: 700; }
+.pf-tags .pf-sample { border-style: dashed; color: var(--d-mute); font-weight: 600; }
+.pf-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.pf-actions .dr-btn { min-height: 46px; padding-inline: 20px; }
+
+/* ---------- main grid ---------- */
+.pf-grid { display: grid; gap: 28px; padding-block: 28px clamp(32px, 4vw, 56px); }
+@media (min-width: 1000px) { .pf-grid { grid-template-columns: minmax(0, 1fr) 320px; gap: 36px; align-items: start; } .pf-side { position: sticky; top: 16px; } }
+.pf-col { display: grid; gap: 32px; min-width: 0; }
+
+/* gallery */
+.pf-gallery { display: grid; gap: 10px; }
+.pf-gallery__main { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: var(--d-tint); border: 1px solid var(--d-line); }
+.pf-gallery__main img { width: 100%; height: 100%; object-fit: cover; animation: pf-fade .45s var(--ease); }
+@keyframes pf-fade { from { opacity: .2; transform: scale(1.03); } to { opacity: 1; transform: none; } }
+.pf-gallery__count { position: absolute; right: 12px; bottom: 12px; padding: 3px 10px; background: rgba(23, 21, 17, .8); color: #fff; font-size: .78rem; font-weight: 700; }
+.pf-gallery__thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr)); gap: 8px; }
+.pf-gallery__thumbs button { display: block; width: 100%; aspect-ratio: 4 / 3; padding: 0; overflow: hidden; border: 2px solid transparent; background: var(--d-tint); cursor: pointer; opacity: .75; transition: opacity .2s, border-color .2s; }
+.pf-gallery__thumbs button:hover { opacity: 1; }
+.pf-gallery__thumbs button.is-on { border-color: var(--d-gold); opacity: 1; }
+.pf-gallery__thumbs img { width: 100%; height: 100%; object-fit: cover; }
+
+/* offer */
+.pf-offer { display: flex; align-items: flex-start; gap: 16px; padding: 18px 20px; border: 1px solid var(--d-gold); background: var(--d-tint); }
+.pf-offer__ic { display: grid; place-items: center; flex: none; width: 42px; height: 42px; background: var(--d-gold); color: #fff; }
+.pf-offer__ic .ic { width: 20px; height: 20px; }
+.pf-offer__label { color: var(--d-gold-text); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.pf-offer__deal { margin-top: 2px; font-size: 1.2rem; font-weight: 800; line-height: 1.2; }
+.pf-offer__note { margin-top: 4px; color: var(--d-mute); font-size: .86rem; }
+
+/* services */
+.pf-svc { display: grid; border: 1px solid var(--d-line); background: var(--d-surface); }
+.pf-svc li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-top: 1px solid var(--d-line); }
+.pf-svc li:first-child { border-top: 0; }
+.pf-svc b { color: var(--d-gold-text); font-weight: 800; }
+.pf-note { margin-top: 8px; color: var(--d-mute); font-size: .8rem; }
+.pf-about { max-width: 64ch; color: var(--d-mute); }
+
+/* team */
+.pf-team { display: grid; gap: 10px; }
+.pf-person { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 14px 16px; border: 1px solid var(--d-line); background: var(--d-surface); }
+.pf-person__av { display: grid; place-items: center; width: 48px; height: 48px; background: var(--d-gold); color: #fff; font-size: 1.2rem; font-weight: 800; }
+.pf-person__name { font-size: 1rem; font-weight: 800; line-height: 1.2; }
+.pf-person__role { margin-top: 2px; color: var(--d-mute); font-size: .82rem; }
+.pf-person__skills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.pf-person__skills span { padding: 2px 9px; border: 1px solid var(--d-line); background: var(--d-tint); font-size: .74rem; font-weight: 600; }
+.pf-avail { display: inline-flex; align-items: center; gap: 6px; align-self: start; font-size: .78rem; font-weight: 800; white-space: nowrap; color: var(--d-mute); }
+.pf-avail i { width: 8px; height: 8px; border-radius: 50%; background: var(--d-mute); }
+.pf-avail.is-free { color: var(--open); }
+.pf-avail.is-free i { background: var(--open); }
+.pf-avail.is-busy { color: #b45309; }
+.pf-avail.is-busy i { background: #d97706; }
+@media (max-width: 560px) { .pf-person { grid-template-columns: 44px minmax(0, 1fr); } .pf-avail { grid-column: 2; } }
+
+/* facilities */
+.pf-fac { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.pf-fac li { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--d-line); background: var(--d-surface); font-size: .88rem; font-weight: 600; }
+.pf-fac .ic { flex: none; width: 16px; height: 16px; color: var(--d-gold-text); }
+
+/* side cards */
+.pf-side { display: grid; gap: 16px; }
+.pf-card { padding: 20px; border: 1px solid var(--d-line); background: var(--d-surface); }
+.pf-facts { display: grid; margin-bottom: 16px; }
+.pf-facts > div { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 10px 0; border-top: 1px solid var(--d-line); font-size: .9rem; }
+.pf-facts > div:first-child { border-top: 0; }
+.pf-facts dt { color: var(--d-mute); }
+.pf-facts dd { margin: 0; font-weight: 700; text-align: right; }
+.pf-facts a:hover { color: var(--d-gold-text); }
+.pf-hours { display: grid; }
+.pf-hours li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 10px; margin-inline: -10px; font-size: .88rem; }
+.pf-hours li b { font-weight: 600; }
+.pf-hours li span { display: inline-flex; align-items: center; gap: 8px; }
+.pf-hours li.is-today { background: var(--d-tint); font-weight: 800; }
+.pf-hours li.is-today b { font-weight: 800; }
+.pf-hours em { padding: 1px 7px; background: var(--d-gold); color: #fff; font-size: .66rem; font-style: normal; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+
+/* similar salons */
+.pf-similar { padding-bottom: clamp(36px, 5vw, 64px); }
+.pf-similar__head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+@media (max-width: 720px) {
+  .pf-actions { width: 100%; }
+  .pf-actions .dr-btn { flex: 1 1 140px; }
+}

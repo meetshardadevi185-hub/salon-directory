@@ -3,12 +3,13 @@
 import { Fragment } from 'react';
 import { LOCALES, byCode } from '@/i18n/locales.mjs';
 import { money } from '@/i18n/t.mjs';
-import { CONFIG, CATEGORIES, SALONS, AREA_CITY } from '@/data/home.mjs';
+import { CONFIG, SALONS, AREA_CITY } from '@/data/home.mjs';
 import { getT, localeHref } from '@/lib/i18n';
 import { I, F } from './icons';
 import { Logo, Mark } from './Logo';
 import { CityLandmark } from './CityLandmark';
 import { ThemeToggle } from './ThemeToggle';
+import SiteFooter from './SiteFooter';
 import SiteEffects from './SiteEffects';
 import type { Runtime } from '@/lib/site-effects';
 import '@/styles/home.css';
@@ -34,11 +35,13 @@ const SHOWCASE = [{ key: 'page', icon: I.globe }, { key: 'google', icon: I.pin }
 
 const FEATURED_CITIES = [{ key: 'agra', index: 10 }, { key: 'delhi', index: 0 }, { key: 'mumbai', index: 1 }, { key: 'bengaluru', index: 2 }, { key: 'jaipur', index: 8 }];
 
-const NAV: [string, string][] = [['salons', '#salons'], ['how', '#how'], ['cities', '#cities']];
+// "Salons near you" opens the full salons page; the rest scroll to sections of this page.
+const navLinks = (locale: string): [string, string][] => [['salons', `${localeHref(locale)}salons/`], ['cities', '#cities']];
 
 export default function HomePage({ locale }: { locale: string }) {
   const L = byCode(locale);
   const t = getT(locale);
+  const NAV = navLinks(locale);
   const year = new Date().getFullYear();
   const ex = t('common.examplePhoto');
   const areas: string[] = t.raw('areas');
@@ -49,7 +52,6 @@ export default function HomePage({ locale }: { locale: string }) {
   const waHref = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(t('owners.waText'))}`;
   const deals = SALONS.filter(x => x.deal);
   const pick = deals[0];
-  const cityCount = new Set(SALONS.map(s => AREA_CITY[s.areaIndex])).size;
   const ticker: string[] = t.raw('home2.ticker');
   const faq: { q: string; a: string }[] = t.raw('home2.faq.items');
   const runtime: Runtime = {
@@ -117,7 +119,7 @@ export default function HomePage({ locale }: { locale: string }) {
                 {langList('lang__list')}
               </div>
             </div>
-            <a className="btn btn--accent btn--sm hdr__cta magnetic" href="#owners">{t('nav.listCta')}</a>
+            <a className="btn btn--accent btn--sm hdr__cta magnetic" href="#salons">Book your slot</a>
             <button className="hdr__menu" type="button" aria-expanded="false" aria-controls="sheet">{I.menu}<span className="sr">{t('common.menu')}</span></button>
           </div>
         </div>
@@ -147,64 +149,60 @@ export default function HomePage({ locale }: { locale: string }) {
       <main id="main">
         {/* ============ HERO ============ */}
         <section className="hero" id="top">
-          <div className="hero__media" aria-hidden="true"><span className="hero__glow"></span><span className="hero__stars"></span></div>
-          <div className="hero__in">
-            <h1 className="hero__title">
-              <span className="hero__lead">{t('hero.titleLead')}</span>
-              <span className="hero__fill">{t('hero.titleAccent')}</span>
-            </h1>
-            <p className="hero__sub rise">{t('hero.referenceSub')}</p>
+          <div className="hero__stage">
+            <div className="hero__media" aria-hidden="true"><img src="/assets/photos/barber-hero-generated.png" alt="" width={1024} height={1536} decoding="async" fetchPriority="high" /></div>
+            <div className="hero__in">
+              <div className="hero__copy">
+                <h1 className="hero__title">
+                  <span className="hero__line">Style</span>
+                  <span className="hero__line"><span className="hero__thumb" aria-hidden="true"><img src="/assets/photos/cat-men.webp" alt="" width={160} height={80} decoding="async" /></span>meets</span>
+                  <span className="hero__line hero__line--end">precision</span>
+                </h1>
+                <p className="hero__sub rise">{t('hero.referenceSub')}</p>
 
-            <form className="search rise" role="search" action="#salons" noValidate>
-              <label className="sr" htmlFor={`q-${locale}`}>{t('hero.searchLabel')}</label>
-              <div className="search__field">
-                {I.search}
-                <input id={`q-${locale}`} name="q" type="text" autoComplete="address-level2" enterKeyHint="search" placeholder={t('hero.placeholder')} aria-describedby={`q-status-${locale}`} />
-                <button className="search__near" type="button" data-near="">{I.locate}<span>{t('hero.nearMe')}</span></button>
-                <button className="btn btn--accent search__go" type="submit"><span>{t('hero.submitShort')}</span>{I.arrow}</button>
+                <form className="search rise" role="search" action="#salons" noValidate>
+                  <label className="sr" htmlFor={`q-${locale}`}>{t('hero.searchLabel')}</label>
+                  <div className="search__field">
+                    {I.search}
+                    <input id={`q-${locale}`} name="q" type="text" autoComplete="address-level2" enterKeyHint="search" placeholder={t('hero.placeholder')} aria-describedby={`q-status-${locale}`} />
+                    <button className="search__near" type="button" data-near="">{I.locate}<span>{t('hero.nearMe')}</span></button>
+                    <button className="btn btn--accent search__go" type="submit"><span>{t('hero.submitShort')}</span>{I.arrow}</button>
+                  </div>
+                  <p className="search__status" id={`q-status-${locale}`} role="status" aria-live="polite"></p>
+                </form>
+
+                {pick && (
+                  <a className="hero__pick rise" href={salonHref(pick.slug)}>
+                    <span className="hero__pick-ic" aria-hidden="true">{F.tag}</span>
+                    <span className="hero__pick-copy">
+                      <small>{t('home2.hero.pick')} · <span lang="en">{pick.name}</span></small>
+                      <strong>{t('salons.deals.' + pick.deal)}</strong>
+                    </span>
+                    <span className="hero__pick-go">{t('home2.hero.view')}{I.arrow}</span>
+                  </a>
+                )}
               </div>
-              <p className="search__status" id={`q-status-${locale}`} role="status" aria-live="polite"></p>
-            </form>
-
-            {pick && (
-              <a className="hero__pick rise" href={salonHref(pick.slug)}>
-                <span className="hero__pick-ic" aria-hidden="true">{F.tag}</span>
-                <span className="hero__pick-copy">
-                  <small>{t('home2.hero.pick')} · <span lang="en">{pick.name}</span></small>
-                  <strong>{t('salons.deals.' + pick.deal)}</strong>
-                </span>
-                <span className="hero__pick-go">{t('home2.hero.view')}{I.arrow}</span>
-              </a>
-            )}
+            </div>
           </div>
 
-          {/* services: photo tiles that filter the salon finder */}
-          <nav className="services rise" aria-label={t('hero.quick')}>
-            {CATEGORIES.filter(c => c.key !== 'unisex').map(c => (
-              <a key={c.key} className="service" href="#salons" data-service-filter={c.key}>
-                <span className="service__ph"><img src={`/assets/photos/${c.photo}.webp`} alt="" width={720} height={900} loading="lazy" decoding="async" /></span>
-                <span className="service__name">{t(`categories.items.${c.key}.card`)}</span>
-                <span className="service__from">{t('common.from', { price: price(c.from) })}</span>
-              </a>
-            ))}
-          </nav>
-        </section>
-
-        {/* ============ STATS ============ */}
-        <section className="stats" aria-label="TrimCircle">
-          {(t.raw('home2.stats') as { value: string; label: string }[]).map(s => (
-            <div key={s.label} className="stat">
-              <strong>{s.value.replace('{salons}', String(SALONS.length)).replace('{cities}', String(cityCount))}</strong>
-              <span>{s.label}</span>
+          <section className="growth" aria-labelledby="growth-h">
+            <div className="growth__in">
+              <figure className="growth__owner">
+                <img src="/assets/photos/salon-owner-generated.png" alt="Salon owner in a modern TrimCircle partner salon" width={1536} height={1024} loading="lazy" decoding="async" />
+              </figure>
+              <div className="growth__card">
+                <p className="growth__eyebrow">For salon owners</p>
+                <h2 id="growth-h">Your salon deserves to be found.</h2>
+                <p className="growth__lead">Get the essentials your salon needs to be discovered, trusted, and easier to run.</p>
+                <ul role="list">
+                  <li>{I.check}<span>Free salon webpage with your photos, prices and timings</span></li>
+                  <li>{I.check}<span>Google Business Profile support to help people find you</span></li>
+                  <li>{I.check}<span>Simple bookings and queue tools for your everyday workflow</span></li>
+                </ul>
+                <a className="growth__cta" href="#owners">Get your free salon page {I.arrow}</a>
+              </div>
             </div>
-          ))}
-        </section>
-
-        {/* ============ STATEMENT ============ */}
-        <section className="statement" aria-labelledby="statement-h">
-          <h2 id="statement-h" className="display" data-split=""><Emph text={t('home2.statement.title')} /></h2>
-          <p className="statement__sub">“{t('home2.statement.sub')}”</p>
-          <a className="btn btn--ghost" href="#salons">{t('home2.statement.cta')}{I.arrow}</a>
+          </section>
         </section>
 
         {/* ============ OFFERS ============ */}
@@ -227,9 +225,12 @@ export default function HomePage({ locale }: { locale: string }) {
                 <img className="offer__ph" src={`/assets/photos/${OFFER_PHOTOS[x.slug] ?? x.photo}.webp`} alt="" loading="lazy" decoding="async" />
                 <span className="offer__arrow" aria-hidden="true">{I.arrow}</span>
                 <div className="offer__body">
+                  <small className="offer__kicker">{t('home2.offers.eyebrow')}</small>
                   <h3 className="offer__title">{t('salons.deals.' + x.deal)}</h3>
-                  <p className="offer__tag" lang="en">{x.name}</p>
-                  <p className="offer__area">{areas[x.areaIndex]}</p>
+                  <div className="offer__salon">
+                    <p className="offer__tag" lang="en">{x.name}</p>
+                    <p className="offer__area">{areas[x.areaIndex]}</p>
+                  </div>
                 </div>
                 <div className="offer__foot">
                   <span>{t('home2.offers.view')}</span>
@@ -330,31 +331,11 @@ export default function HomePage({ locale }: { locale: string }) {
               </article>
             ))}
           </div>
-          <div className="salons__more"><button type="button" className="btn btn--ghost" data-show-salons="" data-more-label={t('salons.seeAll')} data-less-label={t('salons.showFewer')}>{t('salons.seeAll')} {I.arrow}</button></div>
+          <div className="salons__more"><button type="button" className="btn btn--ghost" data-show-salons="" data-more-label={t('salons.seeAll')} data-less-label={t('salons.showFewer')}>{t('salons.seeAll')} {I.arrow}</button><a className="btn btn--ghost" href={`${localeHref(locale)}salons/`}>{t('dir.navSalons')} {I.arrow}</a></div>
           <div className="salons__empty" hidden>
             <p>{t('salons.empty')}</p>
             <button type="button" className="btn btn--ghost" data-f-reset="">{t('salons.showAll')}</button>
           </div>
-        </section>
-
-        {/* ============ HOW IT WORKS ============ */}
-        <section className="sec how" id="how" aria-labelledby="how-h">
-          <div className="sec__head sec__head--center">
-            <div>
-              <Eyebrow>{t('home2.how.eyebrow')}</Eyebrow>
-              <h2 id="how-h" className="h2" data-split=""><Emph text={t('home2.how.title')} /></h2>
-            </div>
-          </div>
-          <ol className="how__steps" role="list">
-            {t.raw('how.steps').map((s: { title: string; short: string }, i: number) => (
-              <li key={i} className="how-step">
-                <span className="how-step__num">{pad(i + 1)}</span>
-                <span className="how-step__ic" aria-hidden="true">{[I.search, I.tag, I.check][i]}</span>
-                <h3 className="how-step__title">{s.title}</h3>
-                <p className="how-step__text">{s.short}</p>
-              </li>
-            ))}
-          </ol>
         </section>
 
         {/* ============ CITIES ============ */}
@@ -529,41 +510,7 @@ export default function HomePage({ locale }: { locale: string }) {
       </main>
 
       {/* ============ FOOTER ============ */}
-      <footer className="ftr">
-        <div className="ftr__top">
-          <div className="ftr__brand">
-            <Logo label="TrimCircle" />
-            <p className="ftr__tag">{t('home2.footer.blurb')}</p>
-          </div>
-          <nav className="ftr__col" aria-label={t('footer.explore')}>
-            <p className="ftr__h">{t('footer.explore')}</p>
-            {NAV.map(([k, h]) => <a key={k} href={h}>{t('nav.' + k)}</a>)}
-          </nav>
-          <div className="ftr__col">
-            <p className="ftr__h">{t('footer.owners')}</p>
-            <a href={waHref} target="_blank" rel="noopener">{t('footer.ownersLink')}</a>
-            <a href="#salon-tools">{t('home2.tools.eyebrow')}</a>
-            <a href="#owners">{t('nav.listCta')}</a>
-          </div>
-          <div className="ftr__col">
-            <p className="ftr__h">{t('footer.languages')}</p>
-            {LOCALES.filter(l => l.ready).map(l => (
-              <a key={l.code} className={l.code === locale ? 'is-current' : undefined} href={localeHref(l.code)} hrefLang={l.hreflang} lang={l.hreflang}
-                data-locale={l.code} aria-current={l.code === locale ? 'true' : undefined}>{l.name}</a>
-            ))}
-            <p className="ftr__soon">{t('footer.moreLangs', { count: LOCALES.filter(l => !l.ready).length })}</p>
-          </div>
-        </div>
-        <p className="ftr__mark" aria-hidden="true"><span>TRIM</span>CIRCLE</p>
-        <div className="ftr__bottom">
-          <p>{t('footer.rights', { year })}</p>
-          <p>{t('footer.photosNote')}</p>
-          <div className="ftr__actions">
-            <ThemeToggle className="ftr__theme" toDark={t('common.themeDark')} toLight={t('common.themeLight')} />
-            <a href="#top">{I.arrowUp}{t('footer.top')}</a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter locale={locale} nav={NAV} waHref={waHref} />
 
       <button className="dock" type="button" data-dock="" aria-label={t('hero.submit')}>{I.search}<span>{t('hero.submit')}</span></button>
 

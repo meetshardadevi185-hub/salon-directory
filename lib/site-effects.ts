@@ -490,8 +490,6 @@ export function initSite(R: Runtime) {
   /* ---------- city tiles rise in ---------- */
   gsap.from('.cities__grid li', { opacity: 0, y: 24, duration: .8, ease: EXPO, stagger: .04, scrollTrigger: { trigger: '.cities__grid', start: 'top 90%', once: true } });
 
-  /* ---------- how it works: steps rise in ---------- */
-  gsap.from('.how-step', { opacity: 0, y: 30, duration: .9, ease: EXPO, stagger: .1, scrollTrigger: { trigger: '.how__steps', start: 'top 88%', once: true } });
 
 
   /* ---------- salon tiles ---------- */
@@ -534,6 +532,83 @@ export function initSite(R: Runtime) {
     document.addEventListener('mouseleave', hide); document.addEventListener('mouseenter', show);
     cleanups.push(() => { html.classList.remove('cursor-on'); removeEventListener('mousemove', mv); document.removeEventListener('mouseover', over); });
     return () => cleanups.forEach(f => f());
+  });
+
+  /* ---------- 3D: cards swing up into place as they enter ---------- */
+  ScrollTrigger.batch('.salon, .faq__item, .sc-tab, .city', {
+    start: 'top 92%', once: true,
+    onEnter: batch => gsap.fromTo(batch,
+      { opacity: 0, y: 90, z: -160, rotationX: 30, rotationY: -10, scale: .92, transformPerspective: 1000, transformOrigin: '50% 100%' },
+      { opacity: 1, y: 0, z: 0, rotationX: 0, rotationY: 0, scale: 1, duration: 1.3, ease: 'power4.out', stagger: .1, clearProps: 'transform,opacity' }),
+  });
+
+  /* ---------- 3D: photos drift at a different speed from the page ---------- */
+  $$('.growth__owner, .owners__visual').forEach(box => {
+    const img = $('img', box); if (!img) return;
+    gsap.fromTo(img, { yPercent: -7, scale: 1.16 }, { yPercent: 7, scale: 1.16, ease: 'none', scrollTrigger: { trigger: box, start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+  gsap.to('.hero__media img', { yPercent: 9, scale: 1.05, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  /* ---------- 3D: offers as a coverflow, cards angle away from the centre ---------- */
+  const oRow = $('.offers__row');
+  if (oRow) {
+    const oCards = $$('.offer', oRow);
+    let ticking = false;
+    const flow = () => {
+      ticking = false;
+      const rr = oRow.getBoundingClientRect(), cx = rr.left + rr.width / 2;
+      oCards.forEach(c => {
+        const r = c.getBoundingClientRect();
+        const d = Math.max(-1.5, Math.min(1.5, ((r.left + r.width / 2) - cx) / (rr.width / 2)));
+        gsap.set(c, { transformPerspective: 1100, rotationY: -d * 24, z: -Math.abs(d) * 70, scale: 1 - Math.abs(d) * .06 });
+      });
+    };
+    const queue = () => { if (!ticking) { ticking = true; requestAnimationFrame(flow); } };
+    oRow.addEventListener('scroll', queue, { passive: true }); addEventListener('resize', queue);
+    ScrollTrigger.create({ trigger: oRow, start: 'top bottom', end: 'bottom top', onToggle: queue });
+    queue();
+  }
+
+  /* ---------- 3D: the owners panel opens like a book as it scrolls in ---------- */
+  gsap.fromTo('.growth__owner', { rotationY: -24, x: -60, opacity: .2, transformPerspective: 1200, transformOrigin: '100% 50%' }, { rotationY: 0, x: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: '.growth__in', start: 'top 92%', end: 'top 45%', scrub: .6 } });
+  gsap.fromTo('.growth__card', { rotationY: 20, x: 60, opacity: .2, transformPerspective: 1200, transformOrigin: '0% 50%' }, { rotationY: 0, x: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: '.growth__in', start: 'top 92%', end: 'top 45%', scrub: .6 } });
+
+  /* ---------- 3D: tilt toward the pointer (desktop only) ---------- */
+  mm.add('(hover: hover) and (pointer: fine)', () => {
+    const TILT = '.salon__link, .city, .growth__in';
+    const MAX = 7;
+    const move = (e: PointerEvent) => {
+      const el = (e.target as Element).closest<HTMLElement>(TILT);
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+      el.classList.add('tilt');
+      el.style.setProperty('--ry', (px * MAX * 2).toFixed(2) + 'deg');
+      el.style.setProperty('--rx', (-py * MAX * 2).toFixed(2) + 'deg');
+      el.style.setProperty('--gx', ((px + .5) * 100).toFixed(1) + '%');
+      el.style.setProperty('--gy', ((py + .5) * 100).toFixed(1) + '%');
+    };
+    const leave = (e: PointerEvent) => {
+      const el = (e.target as Element).closest<HTMLElement>(TILT);
+      if (!el || el.contains(e.relatedTarget as Node)) return;
+      el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg');
+    };
+    document.addEventListener('pointermove', move, { passive: true });
+    document.addEventListener('pointerout', leave, { passive: true });
+
+    /* hero portrait leans with the mouse */
+    const hero = $('.hero'), pic = $('.hero__media img');
+    let off = () => {};
+    if (hero && pic) {
+      const rY = gsap.quickTo(pic, 'rotationY', { duration: 1.1, ease: 'power3' }), rX = gsap.quickTo(pic, 'rotationX', { duration: 1.1, ease: 'power3' }), tx = gsap.quickTo(pic, 'x', { duration: 1.1, ease: 'power3' });
+      const copy = $('.hero__copy'); const cx = copy ? gsap.quickTo(copy, 'x', { duration: 1.3, ease: 'power3' }) : () => {}, cy = copy ? gsap.quickTo(copy, 'y', { duration: 1.3, ease: 'power3' }) : () => {};
+      gsap.set(pic, { transformPerspective: 1000 });
+      const hm = (e: PointerEvent) => { const r = hero.getBoundingClientRect(); const px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5; rY(px * 16); rX(-py * 9); tx(px * -34); cx(px * 14); cy(py * 8); };
+      const hl = () => { rY(0); rX(0); tx(0); cx(0); cy(0); };
+      hero.addEventListener('pointermove', hm as EventListener); hero.addEventListener('pointerleave', hl);
+      off = () => { hero.removeEventListener('pointermove', hm as EventListener); hero.removeEventListener('pointerleave', hl); };
+    }
+    return () => { document.removeEventListener('pointermove', move); document.removeEventListener('pointerout', leave); off(); };
   });
 
   // Re-measure scroll triggers whenever the page height changes (fonts, late images, filters, hot reload).
